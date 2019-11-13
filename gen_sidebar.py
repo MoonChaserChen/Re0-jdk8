@@ -2,7 +2,7 @@ import os
 from shutil import copyfile
 
 suffix = ".md"
-gen_file_name = "_sidebar.md"
+gen_file_name = "summary.md"
 doc_path = "docs"
 read_me_file = "README.md"
 
