@@ -57,7 +57,7 @@ HashMap定义的containsKey(Object key)由以下代码确定：
 2. key与k的hash值相等，且equals相等
 
 
-### 如果KEY存在
+## 如果KEY存在
 如有下面的类：
 ```java
 public static class Key {
