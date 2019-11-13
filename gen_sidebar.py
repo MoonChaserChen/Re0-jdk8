@@ -6,6 +6,7 @@ suffix = ".md"
 gen_file_name = "summary.md"
 doc_path = "docs"
 read_me_file = "README.md"
+cname_file = "CNAME"
 
 ignore_files = [gen_file_name, ".git", read_me_file]
 
@@ -25,6 +26,7 @@ def print_file(c_dir, depth, write2):
 
 os.chdir(doc_path)
 copyfile("../" + read_me_file, read_me_file)
+copyfile("../" + cname_file, cname_file)
 g_f = codecs.open(gen_file_name, 'w', encoding='utf-8')
 print_file(".", 0, g_f)
 g_f.close()
