@@ -1,12 +1,12 @@
 import os
 from shutil import copyfile
+import codecs
 
 suffix = ".md"
 gen_file_name = "summary.md"
 doc_path = "docs"
 read_me_file = "README.md"
 
-gen_file_path = "/".join([doc_path, gen_file_name])
 ignore_files = [gen_file_name, ".git", read_me_file]
 
 
@@ -23,6 +23,8 @@ def print_file(c_dir, depth, write2):
                 write2.write("\t" * depth + "- [" + f_n + "](/" + re_f + ")\n")
 
 
-copyfile(read_me_file, "/".join([doc_path, read_me_file]))
-with open(gen_file_path, 'w') as g_f:
-    print_file(doc_path, 0, g_f)
+os.chdir(doc_path)
+copyfile("../" + read_me_file, read_me_file)
+g_f = codecs.open(gen_file_name, 'w', encoding='utf-8')
+print_file(".", 0, g_f)
+g_f.close()
