@@ -45,7 +45,7 @@ java.util.Map规定了key是否存在由containsKey(Object key)方法来确定�
 各实现类的判定各有差异。
 
 ### java.util.AbstractMap
-AbstractMap中定义了一个containsKey的默认实现，即是使用equals方法来进行比较。代码参见[从`Map`说起](#从`Map`说起)。
+AbstractMap中定义了一个containsKey的默认实现，即是使用equals方法来进行比较。代码参见[从`Map`说起](#从Map说起)。
 
 ### java.util.HashMap
 HashMap定义的containsKey(Object key)由以下代码确定：
@@ -108,6 +108,6 @@ Key{id=0, name='Allen'} -> alice value
 ```
 可以看到，结果这里的key与value并未对应上。同时也可以得出结论：
 
-** 当向HashMap中put一个key已存在的键值对时，key不会覆盖以前的，但value会覆盖 **
+**当向HashMap中put一个key已存在的键值对时，key不会覆盖以前的，但value会覆盖**
 
 
