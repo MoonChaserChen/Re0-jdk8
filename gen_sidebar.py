@@ -1,8 +1,9 @@
 import os
 
 suffix = ".md"
-gen_file = "_sidebar.md"
-ignore_files = [gen_file, ".git", "README.md"]
+gen_file_name = "_sidebar.md"
+gen_file_path = "docs/" + gen_file_name
+ignore_files = [gen_file_name, ".git", "README.md"]
 
 
 def print_file(c_dir, depth, write2):
@@ -18,5 +19,5 @@ def print_file(c_dir, depth, write2):
                 write2.write("\t" * depth + "- [" + f_n + "](/" + re_f + ")\n")
 
 
-with open(gen_file, 'w') as g_f:
+with open(gen_file_path, 'w') as g_f:
     print_file(".", 0, g_f)
