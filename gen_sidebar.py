@@ -1,9 +1,13 @@
 import os
+from shutil import copyfile
 
 suffix = ".md"
 gen_file_name = "_sidebar.md"
-gen_file_path = "docs/" + gen_file_name
-ignore_files = [gen_file_name, ".git", "README.md"]
+doc_path = "docs"
+read_me_file = "README.md"
+
+gen_file_path = "/".join([doc_path, gen_file_name])
+ignore_files = [gen_file_name, ".git", read_me_file]
 
 
 def print_file(c_dir, depth, write2):
@@ -19,5 +23,6 @@ def print_file(c_dir, depth, write2):
                 write2.write("\t" * depth + "- [" + f_n + "](/" + re_f + ")\n")
 
 
+copyfile(read_me_file, "/".join([doc_path, read_me_file]))
 with open(gen_file_path, 'w') as g_f:
-    print_file(".", 0, g_f)
+    print_file(doc_path, 0, g_f)
