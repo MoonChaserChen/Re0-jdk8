@@ -21,7 +21,7 @@ def print_file(c_dir, depth, write2):
         else:
             if suffix in f and f not in ignore_files:
                 f_n = os.path.splitext(f)[0]
-                write2.write("\t" * depth + "- [" + f_n + "](/" + re_f + ")\n")
+                write2.write("\t" * depth + "- [" + f_n + "](/" + re_f[2:] + ")\n")
 
 
 os.chdir(doc_path)
