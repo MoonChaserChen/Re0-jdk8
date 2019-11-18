@@ -1,6 +1,7 @@
 import os
 from shutil import copyfile
 import codecs
+import re
 
 suffix = ".md"
 gen_file_name = "summary.md"
@@ -11,8 +12,14 @@ cname_file = "CNAME"
 ignore_files = [gen_file_name, ".git", read_me_file]
 
 
+def sorted_alphanumeric(data):
+    convert = lambda text: int(text) if text.isdigit() else text.lower()
+    alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
+    return sorted(data, key=alphanum_key)
+
+
 def print_file(c_dir, depth, write2):
-    for f in os.listdir(c_dir):
+    for f in sorted_alphanumeric(os.listdir(c_dir)):
         re_f = os.path.join(c_dir, f)
         is_d = os.path.isdir(re_f)
         if is_d and f not in ignore_files:
