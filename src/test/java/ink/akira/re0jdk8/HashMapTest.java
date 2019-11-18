@@ -32,6 +32,14 @@ public class HashMapTest {
         System.out.println(b);
     }
 
+    @Test
+    public void testTableSize(){
+        for (int i = 0; i < 10; i++) {
+            int j = 2 * i;
+            System.out.println(j + ": " + tableSizeFor(j));
+        }
+    }
+
     public static class Key {
         private int id;
         private String name;
@@ -63,5 +71,15 @@ public class HashMapTest {
     static final int hash(Object key) {
         int h;
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+    }
+
+    static final int tableSizeFor(int cap) {
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        return n + 1;
     }
 }
