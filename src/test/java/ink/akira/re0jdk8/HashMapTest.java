@@ -15,6 +15,15 @@ public class HashMapTest {
     }
 
     @Test
+    public void testKetSet(){
+        Map<String, String> map = new HashMap<>();
+        map.put("abc", "value");
+        map.put("ABC", "value");
+        map.keySet().remove("abc");
+        map.forEach((k, v) -> System.out.println(k + ": " + v));
+    }
+
+    @Test
     public void testDuplicateKey1(){
         Map<Key, String> map = new HashMap<>();
         Key allen = new Key(0, "Allen");
