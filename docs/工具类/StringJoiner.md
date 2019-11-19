@@ -1,4 +1,5 @@
 # StringJoiner
+StringJoiner为JDK 8新增加的工具类，用于字符串拼接。位于java.util中。
 
 ### 直接拼接
 ```java
