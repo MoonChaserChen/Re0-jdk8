@@ -2,6 +2,7 @@ package ink.akira.re0jdk8;
 
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,16 @@ public class HashMapTest {
         map.put("abc", "value");
         map.put("ABC", "value");
         map.keySet().remove("abc");
+        Map<String, String> syncMap = Collections.synchronizedMap(map);
         map.forEach((k, v) -> System.out.println(k + ": " + v));
+    }
+
+    @Test
+    public void map2sync(){
+        Map<String, String> map = new HashMap<>();
+        map.put("abc", "value");
+        map.put("ABC", "value");
+        Map<String, String> syncMap = Collections.synchronizedMap(map);
     }
 
     @Test
