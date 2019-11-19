@@ -48,6 +48,7 @@ public class StringJoinerTest {
     @Test
     public void testStringJoiner3(){
         StringJoiner sj = new StringJoiner("").setEmptyValue("initValue");
+        // 空的list
         List<String> list = new ArrayList<>();
         for (String s : list) {
             sj.add(s);
