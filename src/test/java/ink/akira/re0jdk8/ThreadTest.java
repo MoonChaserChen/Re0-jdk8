@@ -1,5 +1,7 @@
 package ink.akira.re0jdk8;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -38,6 +40,7 @@ public class ThreadTest {
     }
 
     public static void main(String[] args) {
+        ExecutorService executorService = Executors.newFixedThreadPool(7);
         Semaphore s0 = new Semaphore(2);
         Semaphore s1 = new Semaphore(0);
         Semaphore s2 = new Semaphore(0);
