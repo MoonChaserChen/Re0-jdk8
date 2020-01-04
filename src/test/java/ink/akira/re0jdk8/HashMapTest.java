@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class HashMapTest {
     @Test
     public void testDuplicateKey(){
@@ -59,7 +61,20 @@ public class HashMapTest {
         }
     }
 
-    public static class Key {
+    @Test
+    public void testFloatHash(){
+        int[] tableSizeArr = new int[]{4, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096};
+        for (int tableSize : tableSizeArr) {
+            int i1 = new Float(1).hashCode() & (tableSize - 1);
+            int i2 = new Float(2).hashCode() & (tableSize - 1);
+            int i3 = new Float(3).hashCode() & (tableSize - 1);
+            int i4 = new Float(4).hashCode() & (tableSize - 1);
+            int i5 = new Float(5).hashCode() & (tableSize - 1);
+            assertThat(i1).isEqualTo(i2).isEqualTo(i3).isEqualTo(i4).isEqualTo(i5);
+        }
+    }
+
+  public static class Key {
         private int id;
         private String name;
 
