@@ -20,17 +20,21 @@ def sorted_alphanumeric(data):
     return sorted(data, key=alphanum_key)
 
 
-def print_file(c_dir, depth, write2):
+def print_file(c_dir, depth, sidebar_file, readme_file):
     for f in sorted_alphanumeric(os.listdir(c_dir)):
         re_f = os.path.join(c_dir, f)
         is_d = os.path.isdir(re_f)
         if is_d and f not in ignore_files:
-            write2.write("\t" * depth + "- " + f + "\n")
-            print_file(re_f, depth + 1, write2)
+            content = "\t" * depth + "- " + f + "\n"
+            sidebar_file.write(content)
+            readme_file.write(content)
+            print_file(re_f, depth + 1, sidebar_file, readme_file)
         else:
             if suffix in f and f not in ignore_files:
                 f_n = os.path.splitext(f)[0]
-                write2.write("\t" * depth + "- [" + f_n + "](/" + re_f[2:] + ")\n")
+                content = "\t" * depth + "- [" + f_n + "](/" + re_f[2:] + ")\n"
+                sidebar_file.write(content)
+                readme_file.write(content)
 
 
 os.chdir(doc_path)
