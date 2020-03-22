@@ -11,7 +11,7 @@ read_me_file = "README.md"
 cname_file = "CNAME"
 ico_file = 'http://image.akira.ink/blog/favicon.ico'
 
-ignore_files = [gen_file_name, ".git", read_me_file]
+ignore_files = [gen_file_name, ".git", read_me_file, "images"]
 
 
 def sorted_alphanumeric(data):
