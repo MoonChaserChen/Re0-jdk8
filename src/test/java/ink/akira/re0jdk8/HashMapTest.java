@@ -5,12 +5,14 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HashMapTest {
     @Test
     public void testDuplicateKey(){
+        new ConcurrentHashMap<>();
         Map<String, String> map = new HashMap<>();
         map.put("abc", "value");
         map.put("ABC", "value");
