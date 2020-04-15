@@ -29,6 +29,55 @@ for method in Queue:
 >3. element => getFist, peek => peekFist
 >4. remove => removeFist, poll => poolFirst
 
+## AbstractQueue
+public abstract class AbstractQueue<E> extends AbstractCollection<E> implements Queue<E> {}
+
+1. 提供add、remove、element的实现，虽然这三个与offer、poll、peek的表现不同，但是实际上却是在这基础上实现的。
+    ```
+    public boolean add(E e) {
+        if (offer(e))
+            return true;
+        else
+            throw new IllegalStateException("Queue full");
+    }
+    
+    public E remove() {
+        E x = poll();
+        if (x != null)
+            return x;
+        else
+            throw new NoSuchElementException();
+    }
+    
+    public E element() {
+        E x = peek();
+        if (x != null)
+            return x;
+        else
+            throw new NoSuchElementException();
+    }
+    ```
+2. 提供来处Collection的某些方法的实现
+    ```
+    public void clear() {
+        while (poll() != null)
+            ;
+    }
+    
+    public boolean addAll(Collection<? extends E> c) {
+        if (c == null)
+            throw new NullPointerException();
+        if (c == this)
+            throw new IllegalArgumentException();
+        boolean modified = false;
+        for (E e : c)
+            if (add(e))
+                modified = true;
+        return modified;
+    }
+    ```
+3. 元素不允许null值
+
 ## BlockingQueue
 public interface BlockingQueue<E> extends Queue<E> {}
 
@@ -53,3 +102,6 @@ public interface BlockingQueue<E> extends Queue<E> {}
 | boolean remove(Object o) | 移除掉某个元素（若有多个，只移除一个），通常通过equals()判断是否为同一个元素。通常不是很高效，只在少数情况下使用，比如存放在队列中的消息被取消了 | 
 | int drainTo(Collection<? super E> c); | 将队列的元素移到集合c中，通常操作比遍历poll()效率高 |
 | int drainTo(Collection<? super E> c, int maxElements); | 将队列最多maxElements个元素移到集合c中，通常操作比遍历poll()效率高 |
+
+### ArrayBlockingQueue
+底层由数组实现的限定容量且不可更改的BlockingQueue。
