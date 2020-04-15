@@ -14,6 +14,21 @@ Java 10 - G1 GC
 ```
 虚拟机默认在Client模式下运行，因此默认使用UseSerialGC参数，因此其GC为：Serial + Serial Old
 ```
+>1. -client
+    Selects the Java HotSpot Client VM. A 64-bit capable JDK currently ignores this option and instead uses the Java Hotspot Server VM.
+>2. https://docs.oracle.com/javase/7/docs/technotes/guides/vm/server-class.html
+>3. https://docs.oracle.com/javase/7/docs/technotes/tools/windows/java.html
+>4. https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/collectors.html
+
+3. 查看
+```
+[fifadmin@kyxl-match-01 ~]$ java -XX:+PrintCommandLineFlags -version
+-XX:InitialHeapSize=260262208 -XX:MaxHeapSize=4164195328 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+java version "1.8.0_161"
+Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
+```
+
 ### Serial收集器
 发展历史最悠久的收集器。GC线程阻塞所有用户线程。新生代GC，采用复制算法。虚拟机运行在Client模式下的默认新生代收集器。
 ### ParNew收集器
