@@ -30,10 +30,11 @@ public class ThreadPoolTest {
     }
 
     public static void main(String[] args) {
-        ExecutorService es = Executors.newSingleThreadExecutor();
+        ScheduledExecutorService ses = Executors.newSingleThreadScheduledExecutor();
         for (int i = 0; i < 20; i++) {
-            es.submit(new Task());
+            ses.submit(new Task());
         }
-        es.shutdown();
+        ses.schedule(new Task(), 1000L, TimeUnit.MILLISECONDS);
+        ses.shutdown();
     }
 }
