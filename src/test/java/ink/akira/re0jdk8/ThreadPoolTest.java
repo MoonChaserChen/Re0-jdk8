@@ -3,10 +3,7 @@ package ink.akira.re0jdk8;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class ThreadPoolTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(ThreadPoolTest.class);
@@ -33,7 +30,10 @@ public class ThreadPoolTest {
     }
 
     public static void main(String[] args) {
-        ScheduledExecutorService ses = Executors.newScheduledThreadPool(10);
-        ses.scheduleWithFixedDelay(new Task(), 0, 1000, TimeUnit.MILLISECONDS);
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        for (int i = 0; i < 20; i++) {
+            es.submit(new Task());
+        }
+        es.shutdown();
     }
 }
