@@ -18,7 +18,7 @@ Segment会以this.segments[0]为原型进行创建，创建好后通过CAS操作
 > 这个锁把Segment的扩容（这个扩容叫 `rehash()`，而在HashMap里叫 `resize()`）也包裹了。
 
 ## JDK1.8
-![jdk1.8_chm_put.jpeg](https://blog.jdk8.akira.ink/images/jdk1.8_chm_put.jpeg)
+![jdk1.8_chm_put.jpeg](/images/jdk1.8_chm_put.jpeg)
 
 > 对桶中第一个元素使用CAS操作，对后续元素使用synchronized操作（同步对象为桶头元素）
 > 扩容叫 `tryPresize()`
