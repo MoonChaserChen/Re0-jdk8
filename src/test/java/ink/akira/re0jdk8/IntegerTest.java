@@ -48,4 +48,9 @@ public class IntegerTest {
         System.out.println(d1 == d2); //false
         System.out.println(d3 == d4); //false
     }
+
+    @Test
+    public void testBigCount(){
+        System.out.println(Integer.bitCount(-3));
+    }
 }
