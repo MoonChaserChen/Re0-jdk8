@@ -36,7 +36,7 @@ public class StringJoinerTest {
         StringJoiner sj = new StringJoiner(",", "(", ")");
         sj.add("abc");
         sj.add("def");
-        System.out.println(sj.toString()); // abcdef
+        System.out.println(sj.toString()); // (abc,def)
     }
 }
 ```
