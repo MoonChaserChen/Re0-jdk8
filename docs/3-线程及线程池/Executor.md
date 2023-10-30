@@ -1,5 +1,5 @@
 # Executor
-![executor](https://blog.jdk8.akira.ink/images/executor.png)
+![executor](../images/executor.png)
 
 ## Executor的设计思想
 | 概念 | 理解 |
